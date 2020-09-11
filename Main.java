@@ -1,13 +1,3 @@
-/* CS4500 HW#1
-*  Computer Science
-*  Fredrick Muikia
-*  ftmrk9@mail.umsl.edu
-*  08/31/202
-*  The program take a zip code from the user as an input and looks for the values in pi digits that run up to 1,000,000 digits
-*  For the pi algorithm I used https://rosettacode.org/wiki/Pi#Java as my resource
-* */
-package com.company;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -33,7 +23,7 @@ public class Main {
         // Takes in zip as an input
         // Calculates pi digits
         // Looks for the digits in pi
-        public static void calcPiDigits(char[] zip ){
+        public static String calcPiDigits(char c ){
             BigInteger nn, nr ;
             int i = 0;
             ArrayList arr = new ArrayList(100000);
@@ -44,17 +34,10 @@ public class Main {
                     if (count == 1000000) {
                         System.exit(1);
                     }
-
-                    if (n.intValue() == Character.getNumericValue(zip[0])) {
-                        System.out.println(Character.getNumericValue(zip[0]) + " was found at #" + count);
-                    } else if (n.intValue() == Character.getNumericValue(zip[1])) {
-                        System.out.println(Character.getNumericValue(zip[1]) + " was found at #" + count);
-                    } else if (n.intValue() == Character.getNumericValue(zip[2])) {
-                        System.out.println(Character.getNumericValue(zip[2]) + " was found at #" + count);
-                    } else if (n.intValue() == Character.getNumericValue(zip[3])) {
-                        System.out.println(Character.getNumericValue(zip[3]) + " was found at #" + count);
-                    } if (n.intValue() == Character.getNumericValue(zip[4])) {
-                        System.out.println(Character.getNumericValue(zip[4]) + " was found at #" + count);
+                    
+                    if (n.intValue() == Character.getNumericValue(c)) {
+                        System.out.println(Character.getNumericValue(c) + " was found at #" + count);
+                        return (Character.getNumericValue(c) + " was found at #" + count);
                     }
 
                     if(first){System.out.print("") ; first = false ;}
@@ -102,7 +85,9 @@ public class Main {
                 test();
             } else {
                 char[] digitsAsChar = String.valueOf(zip).toCharArray();
-                calcPiDigits(digitsAsChar);
+                for ( int i = 0; i < digitsAsChar.length; i++ ) {
+                    calcPiDigits(digitsAsChar[i]);
+                }
             }
         }
 
